@@ -36,6 +36,9 @@ const products_reducer = (state, action) => {
       products_loading: false,
     };
   }
+  if (action.type === 'GET_PRODUCTS_END') {
+    return { ...state, products_loading: false };
+  }
   if (action.type === GET_PRODUCTS_ERROR) {
     return { ...state, products_loading: false, single_product_error: true };
   }
