@@ -55,8 +55,11 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: UPDATE_SORT, payload: value });
   };
   const updateFilters = (e) => {
-    const value = e.target.value;
+    let value = e.target.value;
     const name = e.target.name;
+    if (name === 'category') {
+      value = e.target.textContent;
+    }
     dispatch({ type: UPDATE_FILTERS, payload: { value, name } });
   };
   const clearFilters = () => {};
