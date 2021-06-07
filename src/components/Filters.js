@@ -6,12 +6,20 @@ import { FaCheck } from 'react-icons/fa';
 
 const Filters = () => {
   const {
-    filters: { text, category, company, color, min_price, shipping },
+    filters: {
+      text,
+      category,
+      company,
+      color,
+      min_price,
+      price,
+      max_price,
+      shipping,
+    },
     updateFilters,
     clearFilters,
     all_products,
   } = useFilterContext();
-  console.log(category);
   const categories = getUniqueValues(all_products, 'category');
   const companies = getUniqueValues(all_products, 'company');
   const colors = getUniqueValues(all_products, 'colors');
@@ -53,6 +61,25 @@ const Filters = () => {
             </div>
           </div>
           {/* end of categories */}
+          {/* companies */}
+          <div className='form-control'>
+            <h5>Companies</h5>
+            <select
+              name='company'
+              value={company}
+              onChange={updateFilters}
+              className='company'
+            >
+              {companies.map((c, i) => {
+                return (
+                  <option value={c} key={i}>
+                    {c}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          {/* end of companies */}
         </form>
       </div>
     </Wrapper>
