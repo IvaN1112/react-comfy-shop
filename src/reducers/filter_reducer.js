@@ -104,6 +104,13 @@ const filter_reducer = (state, action) => {
         return product.category === category;
       });
     }
+    // filtering company
+    if (company !== 'all') {
+      tempProducts = tempProducts.filter((product) => {
+        return product.company === company;
+      });
+    }
+
     return { ...state, filtered_products: tempProducts };
   }
   if (action.type === CLEAR_FILTERS) {
