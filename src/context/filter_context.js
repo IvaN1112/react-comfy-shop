@@ -52,7 +52,7 @@ export const FilterProvider = ({ children }) => {
     // if there weere multiple select inputs
     // const name = e.target.name;
     const value = e.target.value;
-    dispatch({ type: UPDATE_SORT, payload: value });
+    dispatch({ type: SORT_PRODUCTS, payload: value });
   };
   const updateFilters = (e) => {
     let value = e.target.value;

@@ -98,19 +98,36 @@ const filter_reducer = (state, action) => {
         return product.name.toLowerCase().startsWith(text);
       });
     }
-    // filtering category
+    // category
     if (category !== 'all') {
       tempProducts = tempProducts.filter((product) => {
         return product.category === category;
       });
     }
-    // filtering company
+    // company
     if (company !== 'all') {
       tempProducts = tempProducts.filter((product) => {
         return product.company === company;
       });
     }
+    // colors
+    if (color !== 'all') {
+      tempProducts = tempProducts.filter((product) => {
+        return product.colors.find((c) => c === color);
+      });
+    }
 
+    //price
+    tempProducts = tempProducts.filter((product) => {
+      return product.price <= price;
+    });
+
+    //shipping
+    if (shipping) {
+      tempProducts = tempProducts.filter((product) => {
+        return product.shipping === true;
+      });
+    }
     return { ...state, filtered_products: tempProducts };
   }
   if (action.type === CLEAR_FILTERS) {
