@@ -34,7 +34,6 @@ const AddToCart = ({ product }) => {
         colors:
         <div>
           {colors.map((color, index) => {
-            console.log(color);
             return (
               <button
                 key={index}
