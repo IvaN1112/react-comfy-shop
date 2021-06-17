@@ -70,6 +70,18 @@ const cart_reducer = (state, action) => {
     });
     return { ...state, cart: newItems };
   }
+  if (action.type === TOGGLE_CART_ITEM_AMOUNT) {
+    const { cart_items, total_amount } = state.cart.reduce(
+      (total, item) => {
+        const { price, amount } = item;
+        total.cart_items += amount;
+        total.total_amount += amount * price;
+        return total;
+      },
+      { cart_items: 0, total_amount: 0 }
+    );
+    return { ...state, cart_items, total_amount };
+  }
   throw new Error(`No Matching "${action.type}" - action type`);
 };
 

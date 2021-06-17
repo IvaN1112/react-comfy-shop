@@ -48,6 +48,7 @@ export const CartProvider = ({ children }) => {
   };
   //add to local storage on cart change
   useEffect(() => {
+    dispatch({ type: TOGGLE_CART_ITEM_AMOUNT });
     localStorage.setItem('cart', JSON.stringify(state.cart));
   }, [state.cart]);
   return (
