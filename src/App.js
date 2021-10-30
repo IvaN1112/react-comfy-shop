@@ -1,6 +1,7 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Navbar, Sidebar, Footer } from './components';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Navbar, Sidebar, Footer } from "./components";
+import ScrollToTop from "./utils/ScrollToTop.js";
 
 import {
   Home,
@@ -11,12 +12,13 @@ import {
   Error,
   About,
   PrivateRoute,
-} from './pages/';
+} from "./pages/";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
   return (
     <Router>
+      <ScrollToTop />
       <Navbar
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
@@ -26,25 +28,25 @@ function App() {
         setIsSidebarOpen={setIsSidebarOpen}
       />
       <Switch>
-        <Route exact path='/'>
+        <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path='/about'>
+        <Route exact path="/about">
           <About />
         </Route>
-        <Route exact path='/cart'>
+        <Route exact path="/cart">
           <Cart />
         </Route>
-        <Route exact path='/products'>
+        <Route exact path="/products">
           <Products />
         </Route>
-        <Route exact path='/product/:id'>
+        <Route exact path="/product/:id">
           <SingleProduct />
         </Route>
-        <Route exact path='/checkout'>
+        <Route exact path="/checkout">
           <Checkout />
         </Route>
-        <Route exact path='*'>
+        <Route exact path="*">
           <Error />
         </Route>
       </Switch>
