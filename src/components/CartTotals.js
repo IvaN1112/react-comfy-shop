@@ -1,12 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
-import { useCartContext } from '../context/cart_context';
-import { useUserContext } from '../context/user_context';
-import { formatPrice } from '../utils/helpers';
-import { Link } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
+import { useCartContext } from "../context/cart_context";
+import { formatPrice } from "../utils/helpers";
+import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const CartTotals = () => {
   const { total_amount, shipping_fee } = useCartContext();
+  const { user, loginWithRedirect } = useAuth0();
   return (
     <Wrapper>
       <div>
@@ -22,9 +23,19 @@ const CartTotals = () => {
             order total: <span>{formatPrice(total_amount + shipping_fee)}</span>
           </h4>
         </article>
-        <Link to='/checkout' className='btn'>
-          Proceed to checkout
-        </Link>
+        {user ? (
+          <Link to="/checkout" className="btn">
+            Proceed to checkout
+          </Link>
+        ) : (
+          <button
+            type="button"
+            className="btn"
+            onClick={() => loginWithRedirect()}
+          >
+            Login
+          </button>
+        )}
       </div>
     </Wrapper>
   );
