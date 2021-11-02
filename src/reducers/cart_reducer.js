@@ -1,10 +1,9 @@
 import {
   ADD_TO_CART,
   CLEAR_CART,
-  COUNT_CART_TOTALS,
   REMOVE_CART_ITEM,
   TOGGLE_CART_ITEM_AMOUNT,
-} from '../actions';
+} from "../actions";
 
 const cart_reducer = (state, action) => {
   if (action.type === ADD_TO_CART) {
@@ -48,17 +47,17 @@ const cart_reducer = (state, action) => {
   if (action.type === CLEAR_CART) {
     return { ...state, cart: [] };
   }
-  if (action.type === 'TOGGLE_AMOUNT') {
+  if (action.type === "TOGGLE_AMOUNT") {
     const newItems = state.cart.map((item) => {
       if (item.id === action.payload.id) {
-        if (action.payload.value === 'inc') {
+        if (action.payload.value === "inc") {
           let newAmount = item.amount + 1;
           if (newAmount > item.max) {
             newAmount = item.max;
           }
           return { ...item, amount: newAmount };
         }
-        if (action.payload.value === 'dec') {
+        if (action.payload.value === "dec") {
           let newAmount = item.amount - 1;
           if (newAmount < 1) {
             newAmount = 1;

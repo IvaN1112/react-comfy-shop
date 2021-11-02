@@ -12,46 +12,49 @@ import {
   Error,
   About,
   PrivateRoute,
+  AuthWrapper,
 } from "./pages/";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
   return (
-    <Router>
-      <ScrollToTop />
-      <Navbar
-        isSidebarOpen={isSidebarOpen}
-        setIsSidebarOpen={setIsSidebarOpen}
-      />
-      <Sidebar
-        isSidebarOpen={isSidebarOpen}
-        setIsSidebarOpen={setIsSidebarOpen}
-      />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/about">
-          <About />
-        </Route>
-        <Route exact path="/cart">
-          <Cart />
-        </Route>
-        <Route exact path="/products">
-          <Products />
-        </Route>
-        <Route exact path="/product/:id">
-          <SingleProduct />
-        </Route>
-        <PrivateRoute exact path="/checkout">
-          <Checkout />
-        </PrivateRoute>
-        <Route exact path="*">
-          <Error />
-        </Route>
-      </Switch>
-      <Footer />
-    </Router>
+    <AuthWrapper>
+      <Router>
+        <ScrollToTop />
+        <Navbar
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+        />
+        <Sidebar
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+        />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/cart">
+            <Cart />
+          </Route>
+          <Route exact path="/products">
+            <Products />
+          </Route>
+          <Route exact path="/product/:id">
+            <SingleProduct />
+          </Route>
+          <PrivateRoute exact path="/checkout">
+            <Checkout />
+          </PrivateRoute>
+          <Route exact path="*">
+            <Error />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
+    </AuthWrapper>
   );
 }
 
