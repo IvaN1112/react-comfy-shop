@@ -28,6 +28,7 @@ const SingleProductPage = () => {
   }, [fetchSingleProduct, id]);
   useEffect(() => {
     if (error) {
+      console.log("There was an error");
       setTimeout(() => {
         history.push("/");
       }, 3000);

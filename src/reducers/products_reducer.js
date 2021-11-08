@@ -7,7 +7,7 @@ import {
   GET_SINGLE_PRODUCT_BEGIN,
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
-} from '../actions';
+} from "../actions";
 
 const products_reducer = (state, action) => {
   if (action.type === SIDEBAR_OPEN) {
@@ -36,11 +36,11 @@ const products_reducer = (state, action) => {
       products_loading: false,
     };
   }
-  if (action.type === 'GET_PRODUCTS_END') {
+  if (action.type === "GET_PRODUCTS_END") {
     return { ...state, products_loading: false };
   }
   if (action.type === GET_PRODUCTS_ERROR) {
-    return { ...state, products_loading: false, single_product_error: true };
+    return { ...state, products_loading: false, products_error: true };
   }
   if (action.type === GET_SINGLE_PRODUCT_BEGIN) {
     return {
