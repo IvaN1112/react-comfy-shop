@@ -14,12 +14,12 @@ const CheckoutPage = () => {
         {cart.length < 1 ? (
           <div class="empty">
             <h4>Your cart is empty...</h4>
-            <Link to="/cart" className="btn">
+            <Link to="/products" className="btn">
               fill it
             </Link>
           </div>
         ) : (
-          <h4>Stripe checkout here</h4>
+          <StripeCheckout />
         )}
       </Wrapper>
     </main>

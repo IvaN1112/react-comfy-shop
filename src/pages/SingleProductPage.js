@@ -25,7 +25,7 @@ const SingleProductPage = () => {
   } = useProductsContext();
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`);
-  }, [fetchSingleProduct, id]);
+  }, [id]);
   useEffect(() => {
     if (error) {
       console.log("There was an error");
